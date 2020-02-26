@@ -84,7 +84,8 @@ class DoublyLinkedList:
     Returns the value of the removed Node."""
     def remove_from_tail(self):
         if self.tail is not None:
-            value = self.tail
+            value = self.tail.value
+            self.delete(self.tail)
             return value
 
     """Removes the input node from its current spot in the 
@@ -122,3 +123,25 @@ class DoublyLinkedList:
     """Returns the highest value currently in the list"""
     def get_max(self):
         pass
+
+    def getMid(self):
+        hare = self.head
+        tortoise = self.head
+        while hare.next and hare.next.next:
+            hare = hare.next.next
+            tortoise = tortoise.next
+
+        return tortoise
+
+dll = DoublyLinkedList()
+
+dll.add_to_head(12)
+dll.add_to_head(17)
+dll.add_to_head(13)
+dll.add_to_head(20)
+dll.add_to_head(1)
+dll.add_to_head(7)
+dll.add_to_head(29)
+dll.add_to_head(14)
+
+print(dll.getMid().value)
